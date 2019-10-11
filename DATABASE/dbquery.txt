@@ -1,0 +1,70 @@
+CREATE TABLE [dbo].[PaymentDetails] (
+    [id]                  INT          IDENTITY (1, 1) NOT NULL,
+    [txtType]             VARCHAR (50) NULL,
+    [amount]              FLOAT (53)   NULL,
+    [remarks]             VARCHAR (50) NULL,
+    [mentorId]            INT          NOT NULL,
+    [mentorName]          VARCHAR (50) NULL,
+    [trainingId]          INT          NOT NULL,
+    [skillName]           VARCHAR (50) NULL,
+    [totalAmountToMentor] FLOAT (53)   NULL,
+    CONSTRAINT [PaymentDtls] PRIMARY KEY CLUSTERED ([id] ASC)
+);
+
+
+CREATE TABLE [dbo].[SignupDtls] (
+    [id]                INT          IDENTITY (1, 1) NOT NULL,
+    [email]             VARCHAR (50) NOT NULL,
+    [userName]          VARCHAR (50) NOT NULL,
+    [password]          VARCHAR (50) NOT NULL,
+    [firstName]         CHAR (50)    NOT NULL,
+    [lastName]          CHAR (50)    NOT NULL,
+    [contactNumber]     NUMERIC (10) NOT NULL,
+    [regCode]           VARCHAR (50) NULL,
+    [role]              INT          NOT NULL,
+    [linkdinUrl]        VARCHAR (50) NULL,
+    [yearOfExperience]  INT          NULL,
+    [active]            BIT          NOT NULL,
+    [confirmedSignUp]   BIT          NULL,
+    [resetPasswordDate] DATETIME     NULL,
+    [resetPassword]     BIT          NULL,
+    [pictureUrl]        VARCHAR (50) NULL,
+    [technology]        VARCHAR (50) NULL,
+    CONSTRAINT [PK_UserDtls] PRIMARY KEY CLUSTERED ([id] ASC),
+    UNIQUE NONCLUSTERED ([email] ASC)
+);
+
+CREATE TABLE [dbo].[SkillDetails] (
+    [id]            INT          IDENTITY (1, 1) NOT NULL,
+    [name]          VARCHAR (50) NULL,
+    [toc]           VARCHAR (50) NULL,
+    [prerequisites] VARCHAR (50) NULL,
+    [fees]          INT          NULL,
+    CONSTRAINT [SkillDtls] PRIMARY KEY CLUSTERED ([id] ASC)
+);
+
+CREATE TABLE [dbo].[TrainingDtls] (
+    [id]              INT          IDENTITY (1, 1) NOT NULL,
+    [status]          VARCHAR (50) NULL,
+    [progress]        INT          NULL,
+    [commisionAmount] FLOAT (53)   NULL,
+    [rating]          INT          NULL,
+    [avaRating]       FLOAT (53)   NULL,
+    [startDate]       DATE         NULL,
+    [endDate]         DATE         NULL,
+    [startTime]       DATETIME     NULL,
+    [endTime]         DATETIME     NULL,
+    [amountReceived]  FLOAT (53)   NULL,
+    [userId]          INT          NOT NULL,
+    [userName]        VARCHAR (50) NULL,
+    [mentorId]        INT          NOT NULL,
+    [mentorName]      VARCHAR (50) NULL,
+    [skillId]         INT          NOT NULL,
+    [skillname]       VARCHAR (50) NULL,
+    [fees]            FLOAT (53)   NULL,
+    [timeSlot]        VARCHAR (50) NULL,
+    [requested]       BIT          NULL,
+    [rejectNotify]    BIT          NULL,
+    [paymentStatus]   BIT          NULL,
+    CONSTRAINT [PK_TrainingDtls] PRIMARY KEY CLUSTERED ([id] ASC)
+);
